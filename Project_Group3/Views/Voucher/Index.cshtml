@@ -1,0 +1,36 @@
+@model List<WebLibrary.Models.Voucher>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+
+<div class="container my-3">
+    <a class="btn btn-success my-2" asp-action="Create">Create</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Admin ID</th>
+                <th>Voucher ID</th>
+                <th>Percent Discount</th>
+                <th>Code Voucher</th>
+                <th>Start At</th>
+                <th>End At</th>
+                <th>Is Active</th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model)
+    {
+                <tr>
+                    <td>@item.AdminId</td>
+                    <td>@item.VoucherId</td>
+                    <td>@item.PercentDiscount</td>
+                    <td>@item.CodeVoucher</td>
+                    <td>@item.StartAt</td>
+                    <td>@item.EndAt</td>
+                    <td>@item.IsActive</td>
+                </tr>
+    }
+        </tbody>
+    </table>
+</div>

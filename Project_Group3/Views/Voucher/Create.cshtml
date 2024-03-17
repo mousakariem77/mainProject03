@@ -1,0 +1,56 @@
+@model WebLibrary.Models.Voucher
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+
+<div class="container my-3">
+    <form asp-action="Create">
+        <div class="mb-3">
+            <label asp-for="AdminId" class="form-label">Admin ID</label>
+            <input asp-for="AdminId" type="text" class="form-control">
+            <span asp-validation-for="AdminId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="VoucherId" class="form-label">Voucher ID</label>
+            <input asp-for="VoucherId" type="number" class="form-control">
+            <span asp-validation-for="VoucherId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PercentDiscount" class="form-label">Percentage Discount</label>
+            <input asp-for="PercentDiscount" type="number" class="form-control">
+            <span asp-validation-for="PercentDiscount" class="text-danger"></span>
+        </div>
+          @* <div class="mb-3">
+            <label asp-for="CodeVoucher" class="form-label">Percentage Discount</label>
+            <input asp-for="CodeVoucher" type="number" class="form-control" readonly>
+        </div> *@
+        <div class="mb-3">
+            <label asp-for="StartAt" class="form-label">Start Date</label>
+            <input asp-for="StartAt" type="datetime-local" class="form-control">
+            <span asp-validation-for="StartAt" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="EndAt" class="form-label">End Date</label>
+            <input asp-for="EndAt" type="datetime-local" class="form-control">
+            <span asp-validation-for="EndAt" class="text-danger"></span>
+        </div>
+        <div class="mx-3 form-check">
+            <label asp-for="IsActive" class="form-check-label font-weight-bold mr-4"></label>
+            <input asp-for="IsActive" class="form-check-input">
+            <span asp-validation-for="IsActive" class="text-danger"></span>
+        </div>
+        
+        <p class="text-danger">@ViewBag.err</p>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>
+
+@{
+    var errorMessage = ViewBag.Message as string;
+}
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger">@errorMessage</div>
+}
